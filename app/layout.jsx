@@ -1,5 +1,9 @@
 
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import '@assets/styles/globals.css';
+
+// Components:
 
 export const metadata = {
     title: 'Property NextJS',
@@ -11,9 +15,11 @@ const MainLayout = ({ children }) => {
     return ( 
         <html >
             <body>
+                <Navbar/>
                 <main>
                     { children }
                 </main>
+                <Footer/>
             </body>
         </html>
     );
