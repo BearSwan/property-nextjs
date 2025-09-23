@@ -1,4 +1,4 @@
-const InfoBoxes = ({ title, bgColor='bg-gray-100', textColor= 'text-gray-800', buttonInfo,  children }) => {
+const InfoBox = ({ title, bgColor='bg-gray-100', textColor= 'text-gray-800', buttonInfo,  children }) => {
     return ( 
         <div className={ `${ bgColor } p-6 rounded-lg shadow-md` }>
             <h2 className={`${ textColor } text-2xl font-bold`}>{title}</h2>
@@ -15,4 +15,4 @@ const InfoBoxes = ({ title, bgColor='bg-gray-100', textColor= 'text-gray-800', b
     );
 }
 
-export default InfoBoxes;
+export default InfoBox;
