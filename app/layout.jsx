@@ -1,9 +1,8 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import AuthProvider from '@/components/AuthProvider';
 import '@assets/styles/globals.css';
-
-// Components:
 
 export const metadata = {
     title: 'Property NextJS',
@@ -13,15 +12,17 @@ export const metadata = {
 
 const MainLayout = ({ children }) => {
     return ( 
-        <html >
-            <body>
-                <Navbar/>
-                <main>
-                    { children }
-                </main>
-                <Footer/>
-            </body>
-        </html>
+        <AuthProvider>
+            <html >
+                <body>
+                    <Navbar/>
+                    <main>
+                        { children }
+                    </main>
+                    <Footer/>
+                </body>
+            </html>
+        </AuthProvider>
     );
 }
 
