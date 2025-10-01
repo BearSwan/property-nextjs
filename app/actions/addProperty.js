@@ -9,8 +9,6 @@ import { redirect } from "next/navigation";
 
 // get form data by attribute name
 async function addProperty(formData) {
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    setIsLoading(true);
     await connectDB();
 
     const sessionUser = await getSessionUser();
@@ -76,8 +74,6 @@ async function addProperty(formData) {
 
     const newProperty = new Property(propertyData);
     await newProperty.save();
-
-    setIsLoading(false);
 
     revalidatePath('/', 'layout');
 
