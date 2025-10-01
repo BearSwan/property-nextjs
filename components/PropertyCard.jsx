@@ -7,6 +7,8 @@ const PropertyCard = ({ property }) => {
     const getRateDisplay = () => {
         const { rates } = property;
 
+		console.log(property.images);
+
         if (rates.monthly) {
             return `${rates.monthly}/month`
         } else if (rates.weekly) {
@@ -19,7 +21,7 @@ const PropertyCard = ({ property }) => {
 	return (
 		<div className='rounded-xl shadow-md relative'>
 			<Image
-                src={`/images/properties/${property.images[0]}`}
+                src={property.images[0]}
                 alt='property item image'
                 priority={false}
                 width='0'
