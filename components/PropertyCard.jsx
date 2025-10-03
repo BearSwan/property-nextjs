@@ -7,8 +7,6 @@ const PropertyCard = ({ property }) => {
     const getRateDisplay = () => {
         const { rates } = property;
 
-		console.log(property.images);
-
         if (rates.monthly) {
             return `${rates.monthly}/month`
         } else if (rates.weekly) {

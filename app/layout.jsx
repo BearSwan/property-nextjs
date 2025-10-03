@@ -3,6 +3,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuthProvider from '@/components/AuthProvider';
 import '@assets/styles/globals.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const metadata = {
     title: 'Property NextJS',
@@ -11,7 +14,7 @@ export const metadata = {
 }
 
 const MainLayout = ({ children }) => {
-    return ( 
+    return (
         <AuthProvider>
             <html >
                 <body>
@@ -20,6 +23,7 @@ const MainLayout = ({ children }) => {
                         { children }
                     </main>
                     <Footer/>
+                    <ToastContainer />
                 </body>
             </html>
         </AuthProvider>

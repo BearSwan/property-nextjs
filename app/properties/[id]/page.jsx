@@ -1,8 +1,12 @@
+import BookmarkButton from "@/components/BookmarkButton";
+import PropertyContactForm from "@/components/PropertyContactForm";
 import PropertyDetails from "@/components/PropertyDetails";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import PropertyImages from "@/components/PropertyImages";
+import ShareButtons from "@/components/ShareButtons";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
+import { convertToSerializibleObject } from "@/utils/covertToObject";
 import Link from "next/link";
 import { FaArrowLeft } from 'react-icons/fa'
 
@@ -10,7 +14,15 @@ const propertyPage = async ({ params }) => {
     const { id } = await params;
 
     await connectDB();
-    const property = await Property.findById(id).lean();
+    const propertyDoc = await Property.findById(id).lean();
+    // Single object
+    const property = convertToSerializibleObject(propertyDoc);
+
+    if (!property) {
+        return (
+            <h1 className="text-center text-2xl font-bold mt-10">Property not found</h1>
+        )
+    }
 
     return (
         <>
@@ -28,8 +40,14 @@ const propertyPage = async ({ params }) => {
             </section>
             <section className="bg-blue-50">
                 <div className="container m-auto py-10 px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+                    {/* add md:grid-cols-70/30 custom class to tailwind.config */}
+                    <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-6">
                         <PropertyDetails property={property}/>
+                        <aside className="space-y-4">
+                            <BookmarkButton property={property} />
+                            <ShareButtons property={property} />
+                            <PropertyContactForm property={property} />
+                        </aside>
                     </div>
                 </div>
             </section>
