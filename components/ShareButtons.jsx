@@ -1,5 +1,5 @@
 import { FaShareSquare } from "react-icons/fa";
-
+// FIXME:TODO: add functionality for share buttons
 const ShareButtons = ({ property }) => {
     return ( 
         <button
